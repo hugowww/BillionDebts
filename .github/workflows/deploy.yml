@@ -6,6 +6,10 @@ on:
       - main
       - dev
       - try_ci
+  pull_request:
+    branches:
+      - main
+      - dev
 
 jobs:
   build:
