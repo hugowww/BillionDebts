@@ -6,6 +6,12 @@ on:
       - main
       - dev
       - try_ci
+      - brTestDev
+  pull_request:
+    branches:
+      - main
+      - dev
+      - brTestDev
 
 jobs:
   build:
@@ -28,7 +34,7 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/try_ci'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/try_ci' || github.ref == 'refs/heads/brTestDev'
     runs-on: ubuntu-latest
     permissions:
       contents: write
