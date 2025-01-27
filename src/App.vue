@@ -6,9 +6,15 @@ import type { IBusiness } from "./core/business/IBusiness";
 
 // bind balance
 let currentBalance = ref(0);
-const engine = new Engine((amount: number) => {
-  currentBalance.value = amount;
-});
+let currentDebts = ref(0);
+const engine = new Engine(
+  () => {
+    currentBalance.value = engine.balance.amount;
+  },
+  () => {
+    currentDebts.value = engine.debts.amount;
+  }
+);
 
 let currentBusinesses = ref<IBusiness[]>([]);
 let buyBusiness = (name: string) => {
@@ -16,19 +22,23 @@ let buyBusiness = (name: string) => {
   currentBusinesses.value = Array.from(engine.businesses.values());
 };
 
-
+let startDebts = () => {
+  engine.debts.play();
+};
 </script>
 
 <template>
   <div class="app-container">
     <h1>App</h1>
     <!-- 顯示目前存款 -->
-    <div class="balance-display">存款: {{ currentBalance }}</div>
+    <div class="balance-display">存款: {{ Math.round(currentBalance) }}</div>
+    <div class="balance-display">債務: {{ Math.round(currentDebts) }}</div>
 
     <div>
       <button @click="buyBusiness('A')">購買產業A</button>
       <button @click="buyBusiness('B')">購買產業B</button>
       <button @click="buyBusiness('C')">購買產業C</button>
+      <button @click="startDebts">開始計算負債</button>
     </div>
     <div>
       <table>
@@ -52,6 +62,22 @@ let buyBusiness = (name: string) => {
             <td>{{ Math.round(business.profit() * 100) }}%</td>
             <td>{{ business.period() }}</td>
             <td>{{ Math.round(business.incomeSec()) }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+          <tr>
+            <th>債務總額</th>
+            <th>利息</th>
+            <th>還款比例</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ Math.round(engine.debts.amount) }}</td>
+            <td>{{ engine.debts.interestRate }}</td>
+            <td>{{ engine.debts.repaymentRatio }}</td>
           </tr>
         </tbody>
       </table>

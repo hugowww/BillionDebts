@@ -3,15 +3,12 @@
  */
 export class Balance {
   public amount: number;
-  private _updateCallback: (amount: number) => void;
+  private _updateCallback: () => void;
   /**
    * 建立新的 Balance 實例
    * @param initAmount 初始金額
    */
-  constructor(
-    initAmount: number = 0,
-    updateCallback: (amount: number) => void
-  ) {
+  constructor(initAmount: number = 0, updateCallback: () => void) {
     this.amount = initAmount;
     this._updateCallback = updateCallback;
   }
@@ -22,7 +19,7 @@ export class Balance {
    */
   increase(value: number): void {
     this.amount += value;
-    this._updateCallback(this.amount);
+    this._updateCallback();
   }
 
   /**
@@ -31,6 +28,6 @@ export class Balance {
    */
   decrease(value: number): void {
     this.amount -= value;
-    this._updateCallback(this.amount);
+    this._updateCallback();
   }
 }

@@ -10,6 +10,7 @@ import { BusinessFactory } from "./business/BusinessFactory";
 export class Engine {
   public balance: Balance;
   private _balanceIncreaseFunc: (amount: number) => void;
+  private _balanceDecreaseFunc: (amount: number) => void;
 
   public debts: Debts;
 
@@ -18,15 +19,27 @@ export class Engine {
   public businesses: Map<string, IBusiness>;
   public talents: Map<string, ITalent>;
 
-  constructor(balanceUpdateCallback: (amount: number) => void, ) {
+  constructor(
+    balanceUpdateCallback: () => void,
+    debtsUpdateCallback: () => void
+  ) {
     this.balance = new Balance(0, balanceUpdateCallback);
     this._balanceIncreaseFunc = (amount: number) => {
       this.balance.increase(amount);
     };
+    this._balanceDecreaseFunc = (amount: number) => {
+      this.balance.decrease(amount);
+    };
 
     this.talentPoints = 0;
 
-    this.debts = new Debts(1000, 0, 0, () => {});
+    this.debts = new Debts(
+      1000,
+      0.01,
+      0.001,
+      this._balanceDecreaseFunc,
+      debtsUpdateCallback
+    );
     this.businesses = new Map();
     this.talents = new Map();
   }
