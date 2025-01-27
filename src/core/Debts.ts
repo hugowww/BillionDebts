@@ -8,7 +8,7 @@ export class Debts {
   public amount: number;
   public interestRate: number;
   public repaymentRatio: number;
-  private _profit: number = 1.0;
+  // private _profit: number = 1.0;
   private _period: number = 1;
 
   // 加乘因子陣列

@@ -92,6 +92,7 @@ export class Engine {
    */
   buyTalent(name: string): void {
     // TODO: 實作購買天賦邏輯
+    console.log("buyTalent", name);
     this._updateRelation();
   }
 

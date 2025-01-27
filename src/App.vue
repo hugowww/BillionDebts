@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MainView from "./views/MainView.vue";
 import { Engine } from "./core/Engine";
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import type { IBusiness } from "./core/business/IBusiness";
 
 // bind balance
@@ -71,6 +71,7 @@ let startDebts = () => {
             <th>債務總額</th>
             <th>利息</th>
             <th>還款比例</th>
+            <th>生產週期</th>
           </tr>
         </thead>
         <tbody>
@@ -78,6 +79,7 @@ let startDebts = () => {
             <td>{{ Math.round(engine.debts.amount) }}</td>
             <td>{{ engine.debts.interestRate }}</td>
             <td>{{ engine.debts.repaymentRatio }}</td>
+            <td>{{ engine.debts.period() }}</td>
           </tr>
         </tbody>
       </table>
