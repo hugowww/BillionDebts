@@ -1,0 +1,78 @@
+
+@import './varables.styl';
+
+.main-view {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-image: url('../assets/bg6.png');
+    color: $dark-color;
+    width: 842px; /* 設定寬度 */
+    height: 595px; /* 設定高度 */
+    background-color: #ddd; /* 設定背景顏色 */
+    border: 1px solid black; /* 設定邊框 */
+    position: relative; /* 使 debug-view 可以絕對定位 */
+    user-select: none;
+}
+
+.main-header {
+    height: 50px;
+    color: $dark-color;
+    fill: $dark-color;
+
+    .tab-container {
+        position: relative;
+    }
+
+    .tab-container:before {
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: $dark-color;
+    }
+
+    .tab-center-container {
+        padding-left: 70px;
+    }
+
+    .tab-item {
+        font-size: 16px;
+        font-weight: bold;
+        border-top: 2px solid $dark-color;
+        border-left: 2px solid $dark-color;
+        border-right: 2px solid $dark-color;
+        border-bottom: 2px solid $dark-color;
+        border-radius: 2px 2px 0 0;
+        margin-right: 10px;
+        padding: 3px;
+        cursor: pointer;
+
+        &.active, &:hover {
+            background-color: $light-color;
+            border-bottom: 2px solid transparent;
+            z-index: 999;
+        }
+    }
+}
+
+.main-body {
+    // height: 100%;
+}
+
+.main-footer {
+    border-top: 3px solid $dark-color;
+
+    .progress {
+        border-radius: 0px;
+        height: 7px;
+        border-bottom: 2px solid $dark-color;
+    }
+
+    .footer-content {
+        padding: 0 10px;
+        font-size: 36px;
+        font-weight: bold;
+    }
+}

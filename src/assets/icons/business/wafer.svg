@@ -1,0 +1,12 @@
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12,0A12,12,0,1,0,24,12,12,12,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10,10,0,0,1,12,22Z" />
+            <path d="M3,6h19v2H2z" />
+            <path d="M0,11h22v2H0z" />
+            <path d="M3,16h19v2H3z" />
+            <path d="M6,3v19h2V3z" />
+            <path d="M11,0v22h2V0z" />
+            <path d="M16,3v19h2V3z" />
+            <path d="M6,6h6v6H6z" />
+            <path d="M11,16h6v7H11z" />
+          </svg>
