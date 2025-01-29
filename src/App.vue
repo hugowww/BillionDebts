@@ -30,6 +30,8 @@ let startDebts = () => {
 <template>
   <div class="app-container">
     <h1>App</h1>
+    <MainView />
+
     <!-- 顯示目前存款 -->
     <div class="balance-display">存款: {{ Math.round(currentBalance) }}</div>
     <div class="balance-display">債務: {{ Math.round(currentDebts) }}</div>
@@ -84,8 +86,6 @@ let startDebts = () => {
         </tbody>
       </table>
     </div>
-
-    <MainView />
   </div>
 </template>
 

@@ -1,0 +1,108 @@
+@import './varables.styl';
+
+.business-view {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100%;
+}
+
+.business-left {
+  width: 125px;
+  position: relative;
+
+  .business-list {
+    margin: 20px;
+    position: relative;
+
+    .business-item {
+      position: absolute;
+
+      for i in 1 .. 20 {
+        &:nth-child({i}) {
+          left: (i % 2) * 28px;
+          top: (i - 1) * 45px;
+        }
+      }
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(81, 48, 13, 0) 0%,
+      rgba(81, 48, 13, 0.8) 20%,
+      rgba(81, 48, 13, 0.8) 80%,
+      rgba(81, 48, 13, 0) 100%
+    );
+  }
+}
+
+.business-item {
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  text-align: center;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: $dark-color;
+  transition: all 0.3s ease;
+  position: relative;
+
+  div {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 48px;
+    height: 48px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    color: $dark-color;
+    fill: $dark-color;
+    background-color: $light-color;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 28px;
+      height: 28px;
+      margin: 0;
+    }
+  }
+
+  &.active {
+    div {
+      background-color: $dark-color;
+    }
+  }
+
+  &.disabled {
+    div {
+      background-color: $dark-color;
+      cursor: not-allowed;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.1);
+
+    div {
+      color: $light-color;
+      fill: $light-color;
+      background-color: $dark-color;
+    }
+
+    &::before {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.business-right {
+  flex: 1;
+  padding: 20px;
+}
