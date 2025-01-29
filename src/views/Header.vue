@@ -89,7 +89,7 @@
   </div>
 </template>
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   currentTab: string;
 }>();
 // 定義要發出的事件
