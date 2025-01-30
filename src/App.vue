@@ -30,6 +30,12 @@ let startDebts = () => {
 <template>
   <div class="app-container">
     <h1>App</h1>
+    <nav>
+      <router-link to="/">首頁</router-link> |
+      <router-link to="/demo01">Demo01</router-link> |
+      <router-link to="/demo02">Demo02</router-link>
+    </nav>
+    <router-view></router-view>
     <MainView />
 
     <!-- 顯示目前存款 -->
