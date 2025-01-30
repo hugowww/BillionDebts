@@ -71,9 +71,7 @@
         <div>${{ formatNumber(10000) }}</div>
         <div>
           <span> -${{ formatNumber(10) }} </span>
-          <span style="font-size: 12px">
-            (-${{ formatNumber(100) }})</span
-          >
+          <span style="font-size: 12px"> (-${{ formatNumber(100) }})</span>
         </div>
       </div>
     </div>
@@ -100,13 +98,21 @@ const formatNumber = (num: number): string => {
 </script>
 
 <style scoped lang="stylus">
+
 .demo01 {
   width: 842px;
   height: 595px;
   border: 1px solid #000;
   margin-bottom: 5px;
-  font-family: "Noto Sans TC", sans-serif;
+
+  .list-group, .btn  {
+    font-family: "Noto Sans TC";
+
+  }
+
 }
+
+
 .header {
   width: 100%;
   height: 50px;
